@@ -71,4 +71,41 @@ void loop() {
   else {
     digitalWrite(white2, LOW);
   }
+  if (distance < 20) {
+    digitalWrite(yellow1, HIGH);
+    sound = 1100;
+  }
+  else {
+    digitalWrite(yellow1, LOW);
+  }
+  if (distance < 15) {
+    digitalWrite(yellow2, HIGH);
+    sound = 1200;
+  }
+  else {
+    digitalWrite(yellow2, LOW);
+  }
+  if (distance < 10) {
+    digitalWrite(red1, HIGH);
+    sound = 1300;
+  }
+  else {
+    digitalWrite(red1, LOW);
+  }
+  if (distance < 5) {
+    digitalWrite(red2, HIGH);
+    sound = 1400;
+  }
+  else {
+    digitalWrite(red2, LOW);
+  }
+  
+  // This turns the buzzer off if the object is too far.
+  if (distance > 40 || distance <= 0) {
+    noTone(buzzer);
+  }
+  else {
+    tone(buzzer, sound);
+  }
+  delay(500);
 }
